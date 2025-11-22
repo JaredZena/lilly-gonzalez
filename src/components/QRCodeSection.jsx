@@ -1,13 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 export default function QRCodeSection() {
-  const [finalURL, setFinalURL] = useState("https://graduacionlilly.netlify.app");
-  
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      setFinalURL(window.location.href);
-    }
-  }, []);
+  const finalURL = "https://lilly-gonzalez.vercel.app/";
   
   return (
     <section className="qr">

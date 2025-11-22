@@ -10,7 +10,7 @@ export default function RSVP() {
     const formData = new FormData(form);
 
     try {
-      const response = await fetch("https://formspree.io/f/mnqeybko", {
+      const response = await fetch("https://formspree.io/f/mkgeqzgb", {
         method: "POST",
         body: formData,
         headers: {
