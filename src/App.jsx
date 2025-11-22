@@ -7,6 +7,7 @@ import RSVP from './components/RSVP';
 import QRCodeSection from './components/QRCodeSection';
 import Footer from './components/Footer';
 import AudioPlayer from './components/AudioPlayer';
+import MedicalDecorations from './components/MedicalDecorations';
 
 function App() {
     useEffect(() => {
@@ -38,13 +39,24 @@ function App() {
 
     return (
         <div className="App">
+            <MedicalDecorations />
             <AudioPlayer />
             <Hero />
-            <Details />
-            <CountdownTimer />
-            <RSVP />
-            <QRCodeSection />
-            <Footer />
+            <div className="fade-in">
+                <Details />
+            </div>
+            <div className="fade-in">
+                <CountdownTimer />
+            </div>
+            <div className="fade-in">
+                <RSVP />
+            </div>
+            <div className="fade-in">
+                <QRCodeSection />
+            </div>
+            <div className="fade-in">
+                <Footer />
+            </div>
         </div>
     );
 }

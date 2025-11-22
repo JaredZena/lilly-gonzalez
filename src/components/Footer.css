@@ -1,0 +1,57 @@
+.footer-medical-symbol {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 80px;
+    color: var(--primary);
+    opacity: 0.2;
+    z-index: 0;
+    animation: float 8s ease-in-out infinite;
+}
+
+.footer-medical-symbol .stethoscope-heart-ecg-svg {
+    width: 100%;
+    height: 100%;
+}
+
+.footer-medical-symbol .heart-path {
+    animation: heartbeat 3s ease-in-out infinite;
+}
+
+.footer-medical-symbol .ecg-wave {
+    stroke-dasharray: 200;
+    stroke-dashoffset: 200;
+    animation: drawECG 3s ease-in-out infinite;
+}
+
+@media (min-width: 768px) {
+    .footer-medical-symbol {
+        width: 150px;
+        height: 100px;
+        opacity: 0.25;
+    }
+}
+
+@keyframes heartbeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+@keyframes drawECG {
+    0% {
+        stroke-dashoffset: 200;
+    }
+    50% {
+        stroke-dashoffset: 0;
+    }
+    100% {
+        stroke-dashoffset: -200;
+    }
+}
+

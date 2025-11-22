@@ -3,53 +3,130 @@
     text-align: center;
     max-width: 500px;
     margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.rsvp-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 35px;
+}
+
+.rsvp-image img {
+    width: 200px;
+    height: auto;
+    max-width: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 8px 25px rgba(26, 77, 107, 0.12));
+    animation: float 6s ease-in-out infinite;
+    animation-delay: -3s;
+    transition: transform 0.3s ease;
+}
+
+.rsvp-image img:hover {
+    transform: scale(1.05);
 }
 
 .rsvp h2 {
+    font-family: 'Playfair Display', serif;
     font-size: 1.8rem;
     color: var(--primary);
-    margin-bottom: 30px;
+    margin-bottom: 35px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+@media (min-width: 768px) {
+    .rsvp-image img {
+        width: 250px;
+    }
 }
 
 .rsvp form {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 22px;
     background: var(--glass-bg);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border: 1px solid var(--glass-border);
-    border-radius: 20px;
-    padding: 40px;
-    box-shadow: var(--shadow);
+    border-radius: 25px;
+    padding: 45px 40px;
+    box-shadow: 0 10px 40px rgba(26, 77, 107, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.rsvp form:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 50px rgba(26, 77, 107, 0.2);
 }
 
 .rsvp input,
 .rsvp select {
     width: 100%;
-    padding: 12px;
-    border-radius: 10px;
-    border: 1px solid var(--secondary);
+    padding: 14px 18px;
+    border-radius: 12px;
+    border: 2px solid rgba(168, 213, 226, 0.3);
     font-size: 1rem;
     font-family: inherit;
+    background: rgba(255, 255, 255, 0.95);
+    transition: all 0.3s ease;
+    color: var(--primary);
+}
+
+.rsvp input:focus,
+.rsvp select:focus {
+    outline: none;
+    border-color: var(--secondary);
+    box-shadow: 0 0 0 3px rgba(168, 213, 226, 0.2);
     background: white;
 }
 
+.rsvp input::placeholder {
+    color: #999;
+}
+
 .rsvp button {
-    background-color: var(--secondary);
+    background: linear-gradient(135deg, var(--secondary) 0%, var(--primary-light) 100%);
     color: white;
     border: none;
-    padding: 12px 30px;
-    border-radius: 25px;
+    padding: 14px 35px;
+    border-radius: 30px;
     font-weight: 600;
     cursor: pointer;
-    transition: 0.3s;
+    transition: all 0.3s ease;
     font-size: 1.1rem;
     margin-top: 10px;
+    box-shadow: 0 4px 15px rgba(168, 213, 226, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.rsvp button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
 }
 
 .rsvp button:hover {
-    background-color: var(--primary);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(26, 77, 107, 0.4);
+}
+
+.rsvp button:hover::before {
+    left: 100%;
+}
+
+.rsvp button:active {
+    transform: translateY(0);
 }
 
 .sent-msg {

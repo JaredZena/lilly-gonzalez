@@ -1,4 +1,5 @@
 import { useState } from "react";
+import baby1 from "../assets/lilly_baby_1.png";
 import './RSVP.css';
 
 export default function RSVP() {
@@ -41,6 +42,9 @@ export default function RSVP() {
 
   return (
     <section className="rsvp">
+      <div className="rsvp-image">
+        <img src={baby1} alt="Dra. Lilly González" />
+      </div>
       <h2>💌 Confirmar asistencia</h2>
       <form onSubmit={handleSubmit}>
         <input type="text" name="nombre" placeholder="Tu nombre" required />

@@ -28,9 +28,22 @@ export default function CountdownTimer() {
       {timer.done ? (
         <p className="count-text">🎓 ¡Hoy es la graduación!</p>
       ) : (
-        <p className="count-text">
-          {timer.days} días · {timer.hours} horas · {timer.minutes} min
-        </p>
+        <div className="countdown-boxes">
+          <div className="countdown-box">
+            <span className="countdown-number">{timer.days}</span>
+            <span className="countdown-label">Días</span>
+          </div>
+          <div className="countdown-separator">:</div>
+          <div className="countdown-box">
+            <span className="countdown-number">{timer.hours}</span>
+            <span className="countdown-label">Horas</span>
+          </div>
+          <div className="countdown-separator">:</div>
+          <div className="countdown-box">
+            <span className="countdown-number">{timer.minutes}</span>
+            <span className="countdown-label">Minutos</span>
+          </div>
+        </div>
       )}
     </section>
   );

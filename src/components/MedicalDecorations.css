@@ -1,0 +1,215 @@
+/* Stethoscope Decoration */
+.stethoscope-decoration {
+    position: fixed;
+    top: 10%;
+    right: 5%;
+    width: 150px;
+    height: 150px;
+    color: var(--secondary);
+    opacity: 0.15;
+    z-index: 0;
+    pointer-events: none;
+    animation: float 8s ease-in-out infinite;
+}
+
+.stethoscope-svg {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 2px 4px rgba(26, 77, 107, 0.1));
+}
+
+.stethoscope-path {
+    stroke-dasharray: 200;
+    stroke-dashoffset: 200;
+    animation: drawPath 3s ease-in-out infinite;
+}
+
+.stethoscope-chest {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+/* ECG Waveform Decoration */
+.ecg-decoration {
+    position: fixed;
+    bottom: 15%;
+    left: 3%;
+    width: 200px;
+    height: 40px;
+    color: var(--accent);
+    opacity: 0.2;
+    z-index: 0;
+    pointer-events: none;
+    animation: slideRight 6s ease-in-out infinite;
+}
+
+.ecg-svg {
+    width: 100%;
+    height: 100%;
+}
+
+.ecg-wave {
+    stroke-dasharray: 300;
+    stroke-dashoffset: 300;
+    animation: drawECG 4s ease-in-out infinite;
+}
+
+/* Medical Cross Decoration */
+.medical-cross-decoration {
+    position: fixed;
+    top: 50%;
+    left: 2%;
+    width: 80px;
+    height: 80px;
+    color: var(--primary);
+    opacity: 0.1;
+    z-index: 0;
+    pointer-events: none;
+    animation: rotate 20s linear infinite;
+}
+
+.medical-cross-svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* Heart Decorations */
+.heart-decoration {
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    color: var(--accent);
+    opacity: 0.2;
+    z-index: 0;
+    pointer-events: none;
+    animation: heartbeat 2s ease-in-out infinite;
+}
+
+.heart-1 {
+    top: 25%;
+    right: 8%;
+    animation-delay: 0s;
+}
+
+.heart-2 {
+    bottom: 30%;
+    right: 12%;
+    animation-delay: 1s;
+}
+
+.heart-svg {
+    width: 100%;
+    height: 100%;
+}
+
+.heart-path {
+    transform-origin: center;
+}
+
+/* Animations */
+@keyframes drawPath {
+    0%, 100% {
+        stroke-dashoffset: 200;
+    }
+    50% {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes drawECG {
+    0% {
+        stroke-dashoffset: 300;
+    }
+    50% {
+        stroke-dashoffset: 0;
+    }
+    100% {
+        stroke-dashoffset: -300;
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.6;
+        transform: scale(1.1);
+    }
+}
+
+@keyframes heartbeat {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.2;
+    }
+    25% {
+        transform: scale(1.15);
+        opacity: 0.3;
+    }
+    50% {
+        transform: scale(1);
+        opacity: 0.2;
+    }
+    75% {
+        transform: scale(1.1);
+        opacity: 0.25;
+    }
+}
+
+@keyframes slideRight {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(20px);
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .stethoscope-decoration,
+    .ecg-decoration,
+    .medical-cross-decoration {
+        opacity: 0.2;
+    }
+    
+    .heart-decoration {
+        opacity: 0.25;
+    }
+    
+    .stethoscope-decoration {
+        width: 120px;
+        height: 120px;
+        top: 5%;
+        right: 2%;
+    }
+    
+    .ecg-decoration {
+        width: 180px;
+        height: 35px;
+        bottom: 10%;
+        opacity: 0.25;
+    }
+    
+    .medical-cross-decoration {
+        width: 70px;
+        height: 70px;
+        opacity: 0.15;
+    }
+    
+    .heart-decoration {
+        width: 35px;
+        height: 35px;
+    }
+}
+

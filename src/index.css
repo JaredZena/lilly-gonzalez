@@ -1,17 +1,23 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
 
 :root {
-  --primary: #003366;
-  --primary-light: #0b3c75;
-  --secondary: #87ceeb;
-  --accent: #f4a261;
-  --bg-gradient-start: #cde9ff;
+  --primary: #1a4d6b;
+  --primary-light: #2d6a8f;
+  --primary-dark: #0d3a52;
+  --secondary: #a8d5e2;
+  --accent: #d62828;
+  --accent-light: #f77f7f;
+  --accent-warm: #f4a261;
+  --bg-gradient-start: #f8fafb;
+  --bg-gradient-mid: #e8f2f7;
   --bg-gradient-end: #ffffff;
-  --text-color: #003366;
+  --text-color: #1a4d6b;
+  --text-light: #5a7a8a;
   --white: #ffffff;
-  --glass-bg: rgba(255, 255, 255, 0.8);
-  --glass-border: rgba(255, 255, 255, 0.3);
-  --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+  --glass-bg: rgba(255, 255, 255, 0.85);
+  --glass-border: rgba(255, 255, 255, 0.4);
+  --shadow: 0 8px 32px 0 rgba(26, 77, 107, 0.12);
+  --shadow-soft: 0 4px 20px 0 rgba(26, 77, 107, 0.08);
 }
 
 * {
@@ -20,13 +26,67 @@
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, var(--bg-gradient-start), var(--bg-gradient-end));
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-mid) 50%, var(--bg-gradient-end) 100%);
+  background-attachment: fixed;
   color: var(--text-color);
   min-height: 100vh;
   overflow-x: hidden;
   line-height: 1.6;
+  position: relative;
+}
+
+/* Medical-themed decorative background pattern */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 20% 30%, rgba(168, 213, 226, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(214, 40, 40, 0.08) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.App {
+  position: relative;
+}
+
+/* Medical-themed decorative elements */
+.App::before {
+  content: '';
+  position: fixed;
+  top: -30%;
+  right: -15%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(168, 213, 226, 0.12) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.6;
+}
+
+.App::after {
+  content: '';
+  position: fixed;
+  bottom: -25%;
+  left: -12%;
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(214, 40, 40, 0.1) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.5;
 }
 
 a {
@@ -69,20 +129,45 @@ button {
   100% { transform: translateY(0px); }
 }
 
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: -1000px 0; }
+  100% { background-position: 1000px 0; }
+}
+
 .floating {
   animation: float 6s ease-in-out infinite;
+}
+
+.fade-in {
+  animation: fadeInUp 0.8s ease-out;
 }
 
 /* QR Code Section */
 .qr {
   padding: 60px 20px;
   text-align: center;
+  position: relative;
+  z-index: 1;
 }
 
 .qr h2 {
+  font-family: 'Playfair Display', serif;
   font-size: 1.8rem;
   color: var(--primary);
   margin-bottom: 15px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
 }
 
 .qr p {
@@ -92,28 +177,45 @@ button {
 }
 
 .qr-img {
-  padding: 20px;
-  background: white;
-  border-radius: 20px;
-  box-shadow: var(--shadow);
+  padding: 25px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.9) 100%);
+  backdrop-filter: blur(10px);
+  border-radius: 25px;
+  box-shadow: 0 10px 40px rgba(26, 77, 107, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: inline-block;
+}
+
+.qr-img:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 15px 50px rgba(26, 77, 107, 0.2);
 }
 
 /* Footer */
 .footer {
   text-align: center;
-  padding: 40px 20px;
-  background: #e6f2ff;
+  padding: 50px 20px;
+  background: linear-gradient(135deg, rgba(248, 250, 251, 0.95) 0%, rgba(255, 255, 255, 0.98) 100%);
+  backdrop-filter: blur(10px);
   color: var(--primary);
-  margin-top: 40px;
+  margin-top: 60px;
+  position: relative;
+  z-index: 1;
+  border-top: 1px solid rgba(168, 213, 226, 0.2);
 }
 
 .footer p {
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   font-weight: 600;
+  font-size: 1.1rem;
 }
 
 .footer .quote {
+  font-family: 'Playfair Display', serif;
   font-style: italic;
   font-weight: 400;
   color: #555;
+  font-size: 1.1rem;
+  opacity: 0.9;
+  letter-spacing: 0.3px;
 }

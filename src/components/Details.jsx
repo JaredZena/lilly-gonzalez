@@ -19,18 +19,18 @@ export default function Details() {
       </div>
       <div className="maps">
         <a
-          href="https://maps.app.goo.gl/YdK4pNPLy9av3SyA6"
+          href="https://www.google.com/maps/search/?api=1&query=Catedral+de+Durango"
           target="_blank"
-          rel="noreferrer"
+          rel="noopener noreferrer"
         >
-          Ver Catedral
+          📍 Ver Catedral en Google Maps
         </a>
         <a
-          href="https://maps.app.goo.gl/nRTg8xZC9z5v6H1B9"
+          href="https://www.google.com/maps/search/?api=1&query=Salon+Imperia+Durango"
           target="_blank"
-          rel="noreferrer"
+          rel="noopener noreferrer"
         >
-          Ver Salón Imperia
+          📍 Ver Salón Imperia en Google Maps
         </a>
       </div>
     </section>
