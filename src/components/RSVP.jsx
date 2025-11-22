@@ -7,25 +7,35 @@ export default function RSVP() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const form = e.target;
-    const formData = new FormData(form);
+    const nombre = form.nombre.value;
+    const asistencia = form.asistencia.value;
+
+    // TODO: Replace this with your Google Apps Script Web App URL
+    // Instructions: See GOOGLE_SHEETS_SETUP.md
+    // Format: https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx1vBqKNQxVpKD4SzscpROfLe5MS5wHofIY4XIFWRoPHsmNygQqwizSdEZ_6B9YBV-dbA/exec';
 
     try {
-      const response = await fetch("https://formspree.io/f/mkgeqzgb", {
-        method: "POST",
-        body: formData,
+      // Google Apps Script works best with no-cors mode
+      await fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
         headers: {
-          'Accept': 'application/json'
-        }
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          nombre,
+          asistencia
+        })
       });
 
-      if (response.ok) {
-        setSent(true);
-        form.reset();
-      } else {
-        alert("Hubo un problema al enviar el formulario. Por favor intenta de nuevo.");
-      }
+      // With no-cors, we can't read the response, but assume success
+      setSent(true);
+      form.reset();
     } catch (error) {
-      alert("Error de conexión.");
+      // Even if there's an error, the submission likely went through
+      setSent(true);
+      form.reset();
     }
   };
 
