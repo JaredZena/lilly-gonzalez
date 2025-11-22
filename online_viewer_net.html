@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Graduación Dra. Lilly González 🎓</title>
+<style>
+  body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(to bottom right, #cde9ff, #ffffff);
+    color: #003366;
+    overflow-x: hidden;
+  }
+
+  header {
+    text-align: center;
+    padding: 40px 20px 20px;
+  }
+
+  header h1 {
+    font-size: 2.4rem;
+    margin-bottom: 10px;
+    color: #0b3c75;
+  }
+
+  header p {
+    font-size: 1.1rem;
+  }
+
+  .hero {
+    text-align: center;
+    margin: 30px auto;
+  }
+
+  .hero img {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 6px solid #87ceeb;
+    box-shadow: 0 0 20px rgba(135, 206, 235, 0.8);
+    animation: fadeIn 2s ease;
+  }
+
+  @keyframes fadeIn {
+    from {opacity: 0; transform: scale(0.9);}
+    to {opacity: 1; transform: scale(1);}
+  }
+
+  .details {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .details h2 {
+    font-size: 1.8rem;
+    color: #004080;
+  }
+
+  .details p {
+    font-size: 1.1rem;
+    margin: 10px 0;
+  }
+
+  .map-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin: 25px 0;
+  }
+
+  .map-buttons a {
+    text-decoration: none;
+    background-color: #87ceeb;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: 600;
+    transition: background 0.3s;
+  }
+
+  .map-buttons a:hover {
+    background-color: #1e90ff;
+  }
+
+  .countdown {
+    text-align: center;
+    margin: 40px 0;
+    font-size: 1.2rem;
+    color: #004080;
+  }
+
+  .footer {
+    background-color: #e6f2ff;
+    text-align: center;
+    padding: 20px;
+    font-size: 0.95rem;
+  }
+
+  form {
+    text-align: center;
+    margin: 30px auto;
+    background: #eaf6ff;
+    padding: 20px;
+    border-radius: 15px;
+    max-width: 400px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  }
+
+  form h3 {
+    margin-bottom: 10px;
+  }
+
+  input, select {
+    width: 80%;
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 8px;
+    border: 1px solid #87ceeb;
+  }
+
+  button {
+    background-color: #1e90ff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  button:hover {
+    background-color: #004080;
+  }
+
+  #qr {
+    text-align: center;
+    margin: 30px 0;
+  }
+
+  #qr canvas {
+    margin-top: 10px;
+  }
+
+  .confetti {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 10;
+  }
+
+  .mensaje-ok {
+    text-align: center;
+    color: #004080;
+    font-weight: 600;
+  }
+</style>
+</head>
+<body>
+
+<!-- Música de fondo -->
+<audio autoplay loop>
+  <source src="https://cdn.pixabay.com/download/audio/2022/07/26/audio_2a079c67a9.mp3?filename=celebration-113985.mp3" type="audio/mpeg">
+</audio>
+
+<div class="confetti" id="confetti"></div>
+
+<header>
+  <h1>🎓 ¡Lo logramos, Dra. Lilly González! 🎉</h1>
+  <p>Después de tanto esfuerzo, llegó el gran día… ¡A celebrar este sueño cumplido!</p>
+</header>
+
+<section class="hero">
+  <img src="https://cdn.pixabay.com/photo/2017/01/20/00/30/graduation-1996856_1280.jpg" alt="Graduación">
+</section>
+
+<section class="details">
+  <h2>✨ Ceremonia de Graduación ✨</h2>
+  <p><strong>📅 Fecha:</strong> 20 de diciembre de 2025</p>
+  <p><strong>⛪ Misa:</strong> 6:00 PM en la Catedral de Durango</p>
+  <p><strong>🎉 Fiesta:</strong> Después de la misa en el Salón Imperia</p>
+</section>
+
+<div class="map-buttons">
+  <a href="https://maps.app.goo.gl/YdK4pNPLy9av3SyA6" target="_blank">📍 Ver Catedral de Durango</a>
+  <a href="https://maps.app.goo.gl/nRTg8xZC9z5v6H1B9" target="_blank">📍 Ver Salón Imperia</a>
+</div>
+
+<div class="countdown">
+  <h3>⏳ Falta para el gran día:</h3>
+  <div id="timer"></div>
+</div>
+
+<!-- Formulario con Formspree -->
+<form id="rsvpForm" action="https://formspree.io/f/mnqeybko" method="POST">
+  <h3>💌 Confirmar Asistencia</h3>
+  <input type="text" name="nombre" placeholder="Tu nombre completo" required><br>
+  <select name="asistencia" required>
+    <option value="">¿Asistirás?</option>
+    <option value="Sí">Sí, ahí estaré 🎉</option>
+    <option value="No">No podré asistir 😢</option>
+  </select><br>
+  <button type="submit">Enviar Confirmación</button>
+  <p class="mensaje-ok" id="mensaje"></p>
+</form>
+
+<!-- Código QR -->
+<div id="qr">
+  <h3>📱 Comparte esta invitación</h3>
+  <p>Escanea el código para abrir la invitación</p>
+  <canvas id="qrCanvas"></canvas>
+</div>
+
+<div class="footer">
+  <p>Con cariño, la familia González ❤️</p>
+  <p>“El esfuerzo siempre tiene su recompensa”</p>
+</div>
+
+<!-- Librería QR -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+
+<script>
+  // Confeti animado
+  const confettiContainer = document.getElementById('confetti');
+  for (let i = 0; i < 100; i++) {
+    const confetti = document.createElement('div');
+    confetti.style.position = 'absolute';
+    confetti.style.width = '8px';
+    confetti.style.height = '8px';
+    confetti.style.background = ['#87ceeb', '#f4a261', '#2a9d8f', '#e9c46a'][Math.floor(Math.random() * 4)];
+    confetti.style.top = Math.random() * window.innerHeight + 'px';
+    confetti.style.left = Math.random() * window.innerWidth + 'px';
+    confetti.style.opacity = Math.random();
+    confetti.style.borderRadius = '50%';
+    confettiContainer.appendChild(confetti);
+    animateConfetti(confetti);
+  }
+
+  function animateConfetti(confetti) {
+    let y = parseFloat(confetti.style.top);
+    setInterval(() => {
+      y += 2;
+      if (y > window.innerHeight) y = -10;
+      confetti.style.top = y + 'px';
+    }, 30);
+  }
+
+  // Contador regresivo
+  const targetDate = new Date("Dec 20, 2025 18:00:00").getTime();
+  const timerElement = document.getElementById("timer");
+  setInterval(() => {
+    const now = new Date().getTime();
+    const distance = targetDate - now;
+    if (distance < 0) {
+      timerElement.innerHTML = "¡Hoy es el gran día! 🎓";
+      return;
+    }
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    timerElement.innerHTML = `${days} días, ${hours} hrs, ${minutes} min`;
+  }, 1000);
+
+  // Mensaje después de enviar formulario
+  const form = document.getElementById("rsvpForm");
+  const mensaje = document.getElementById("mensaje");
+  form.addEventListener("submit", () => {
+    mensaje.textContent = "🎉 ¡Gracias por confirmar! Tu respuesta ha sido enviada.";
+  });
+
+  // Generar código QR (reemplaza el enlace cuando esté en Netlify)
+  const qr = new QRious({
+    element: document.getElementById('qrCanvas'),
+    value: 'https://graduacionlilly.netlify.app',
+    size: 180,
+    background: 'white',
+    foreground: '#004080'
+  });
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
